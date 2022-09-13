@@ -1,0 +1,50 @@
+# distributed training
+nodes: 1
+gpus: 1 # I recommend always assigning 1 GPU to 1 node
+nr: 0 # machine nr. in node (0 -- nodes - 1)
+dataparallel: 0 # Use DataParallel instead of DistributedDataParallel
+workers: 12
+
+# Data option
+modality: mri, tau
+ad: False
+mci: True
+trans_tau: False
+stable: False
+#dir_label: '../getlabels'
+dir_label: '/home/icml/Desktop/getlabels'
+num_label: 2
+resize: True
+#dir_data: '../Data_fsl'
+dir_data: '/media/icml/extremeSSD/Data_fsl'
+clinica: False
+transform: False
+save_samples: False
+t1_linear: False
+finetune: True
+clinica: False
+roi: False
+crop: True
+# train options
+seed: 43 # sacred handles automatic seeding when passed in the config
+batch_size: 32
+image_size: (182,218,182)
+flatten_shape: 128*6*7*6
+start_epoch: 0
+epochs: 100
+scheduler: False
+dropout: 0.5
+patience: 100
+weight_decay: 0.0
+lr: 0.0001
+# model options
+model: resnet
+model_depth: 18
+
+# reload options
+#기존
+#model_path: "wo_transfer/mri/simpleconv/fsl"
+#다음
+model_path: "wo_transfer/mri/simpleconv/fsl_tautomri"
+
+
